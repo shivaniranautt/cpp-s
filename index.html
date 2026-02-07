@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C++ Notes by Shivani</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#f5f0e1,#e6d9c3);
+  color:#111;
+  transition:0.4s;
+}
+body.dark{
+  background:#0f172a;
+  color:#f8fafc;
+}
+.container{max-width:1100px;margin:auto;padding:60px 20px;}
+.page{display:none;}
+.active{display:block;}
+
+h1{font-size:3rem;font-weight:800;margin-bottom:20px;}
+h2{margin-bottom:15px;}
+p{font-size:1.1rem;line-height:1.7;}
+
+button{
+  background:linear-gradient(45deg,#111,#555);
+  border:none;padding:14px 28px;
+  font-size:16px;font-weight:bold;
+  border-radius:30px;
+  cursor:pointer;color:#fff;
+  margin:10px;
+}
+button:hover{transform:scale(1.05);}
+
+.dark button{background:linear-gradient(45deg,#38bdf8,#0ea5e9);}
+
+.hero{
+  display:flex;
+  gap:40px;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.hero-text{flex:1;}
+.hero-icons{
+  flex:1;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+.icon-box{
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  font-size:2.5rem;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.dark .icon-box{background:#1e293b;}
+.icon-box span{display:block;font-size:1rem;font-weight:600;margin-top:10px;}
+
+.section{
+  margin-top:60px;
+  background:#fff;
+  padding:40px;
+  border-radius:25px;
+  box-shadow:0 12px 30px rgba(0,0,0,0.2);
+}
+.dark .section{background:#1e293b;}
+
+.unit-container{
+  display:flex;
+  gap:30px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+.unit-card{
+  flex:1;
+  min-width:280px;
+  background:#fff;
+  padding:30px;
+  border-radius:20px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+.dark .unit-card{background:#1e293b;}
+
+.email{margin-top:40px;font-weight:bold;}
+.toggle{
+  position:fixed;
+  top:15px;
+  right:15px;
+}
+.watermark{
+  position:fixed;
+  bottom:10px;
+  right:20px;
+  opacity:0.1;
+  font-weight:bold;
+}
+@media(max-width:900px){
+  .hero{flex-direction:column;}
+  h1{font-size:2.3rem;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="toggle">
+  <button onclick="toggleDark()">🌙 Dark Mode</button>
+</div>
+
+<!-- HOME -->
+<div id="pageHome" class="container page active">
+
+  <div class="hero">
+    <div class="hero-text">
+      <h1>C++ Notes by Shivani</h1>
+      <p>
+        A complete and student-friendly platform to learn <b>C++ Programming</b>
+        with clear explanations, exam-oriented notes, and downloadable PDFs.
+      </p>
+      <button onclick="showPage('pageDownloadIntro')">Download Notes ⬇️</button>
+    </div>
+
+    <div class="hero-icons">
+      <div class="icon-box">💻<span>C++ Programming</span></div>
+      <div class="icon-box">📘<span>OOP Concepts</span></div>
+      <div class="icon-box">🧠<span>Easy Learning</span></div>
+      <div class="icon-box">📄<span>PDF Notes</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>About This Website</h2>
+    <p>
+      <b>C++ Notes by Shivani</b> is specially designed for <b>Semester 1 students</b>.
+      The notes follow syllabus-based structure and explain difficult concepts
+      in simple language with examples.
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Why Use This Website?</h2>
+    <p>✔ Exam-oriented notes</p>
+    <p>✔ Simple explanations with examples</p>
+    <p>✔ Clean PDFs for offline study</p>
+    <p>✔ Perfect for beginners</p>
+  </div>
+
+  <div class="unit-container">
+    <div class="unit-card" onclick="showPage('pageUnit1')">
+      <h3>Unit 1: Principles of OOP</h3>
+      <p>Classes, Objects, Encapsulation, Inheritance, Polymorphism.</p>
+    </div>
+    <div class="unit-card" onclick="showPage('pageUnit2')">
+      <h3>Unit 2: Constructors</h3>
+      <p>Default, Parameterized & Copy Constructors.</p>
+    </div>
+  </div>
+
+  <p class="email">Contact: <a href="mailto:c++withshivani@gmail.com">c++withshivani@gmail.com</a></p>
+</div>
+
+<!-- DOWNLOAD -->
+<div id="pageDownloadIntro" class="container page">
+  <h1>Select Unit to Download</h1>
+  <button onclick="selectUnit('unit1')">Unit 1 PDF</button>
+  <button onclick="selectUnit('unit2')">Unit 2 PDF</button>
+  <button onclick="showPage('pageHome')">⬅ Back</button>
+</div>
+
+<div id="pageDownloadFinal" class="container page">
+  <h1>Download Here ⬇️</h1>
+  <button id="pdfDownloadBtn">Download PDF</button>
+</div>
+
+<div id="pageThankYou" class="container page">
+  <h1>🎉 Thank You for Visiting 🎉</h1>
+  <p>Regards, Shivani</p>
+</div>
+
+<div class="watermark">shivani ranaut</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const { jsPDF } = window.jspdf;
+let selectedUnit='';
+
+const units={
+  unit1:{
+    title:'Unit 1: Principles of Object-Oriented Programming',
+    topics:[
+      {title:'Concepts',content:'Class\nObject\nEncapsulation\nAbstraction\nInheritance\nPolymorphism'},
+      {title:'Example',content:'class Student {\n public:\n  int id;\n};'}
+    ]
+  },
+  unit2:{
+    title:'Unit 2: Constructors',
+    topics:[
+      {title:'Types',content:'Default Constructor\nParameterized Constructor\nCopy Constructor'},
+      {title:'Example',content:'class Car {\n public:\n  Car(){ }\n};'}
+    ]
+  }
+};
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function selectUnit(u){selectedUnit=u;showPage('pageDownloadFinal');}
+
+document.getElementById('pdfDownloadBtn').onclick=()=>{
+  const unit=units[selectedUnit];
+  const doc=new jsPDF();
+  let y=20;
+  doc.setFontSize(20);
+  doc.text(unit.title,105,y,{align:'center'});
+  y+=20;
+  unit.topics.forEach(t=>{
+    doc.setFontSize(14);
+    doc.text(t.title,20,y);y+=10;
+    doc.setFontSize(11);
+    t.content.split('\n').forEach(l=>{
+      doc.text(l,20,y);y+=8;
+    });
+    y+=5;
+  });
+  doc.save(unit.title+'.pdf');
+  showPage('pageThankYou');
+};
+
+function toggleDark(){
+  document.body.classList.toggle('dark');
+}
+</script>
+
+</body>
+</html>
